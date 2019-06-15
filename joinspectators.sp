@@ -3,6 +3,9 @@
 #pragma semicolon 1
 #pragma newdecls required
 
+ConVar moveFrom;
+int joined_players = 0;
+
 public Plugin myinfo = 
 {
 	name = "Join Spectators",
@@ -14,7 +17,7 @@ public Plugin myinfo =
 
 public void OnPluginStart()
 {
-	
+	moveFrom = CreateConVar("sm_js_movefrom", "10", "Count of players that require to move player to spectators");
 }
 
 public void OnClientPutInServer(int client) 
@@ -23,5 +26,18 @@ public void OnClientPutInServer(int client)
 		return; 
 	}
 	
+	++joined_players;
+	
+	int moveFromInt = GetConVarInt(moveFrom);
+
+	if (joined_players <= moveFromInt) {
+		return;
+	}
+	
 	ChangeClientTeam(client, 3);
+}
+
+public void OnClientDisconnect(int client)
+{
+	--joined_players;
 }
