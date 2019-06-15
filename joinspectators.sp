@@ -4,7 +4,6 @@
 #pragma newdecls required
 
 ConVar moveFrom;
-int joined_players = 0;
 
 public Plugin myinfo = 
 {
@@ -21,23 +20,15 @@ public void OnPluginStart()
 }
 
 public void OnClientPutInServer(int client) 
-{
+{	
 	if (IsFakeClient(client)) {
 		return; 
 	}
 	
-	++joined_players;
-	
 	int moveFromInt = GetConVarInt(moveFrom);
-
-	if (joined_players <= moveFromInt) {
+	if (GetClientCount(true) <= moveFromInt) {
 		return;
 	}
 	
 	ChangeClientTeam(client, 3);
-}
-
-public void OnClientDisconnect(int client)
-{
-	--joined_players;
 }
