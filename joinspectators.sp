@@ -19,6 +19,7 @@ public void OnPluginStart()
 {
 	isEnable = CreateConVar("sm_js_enable", "1", "Is plugin enabled");
 	moveFrom = CreateConVar("sm_js_movefrom", "10", "Count of players that require to move player to spectators");
+	AutoExecConfig(true, "join_spectators");
 }
 
 public void OnClientPutInServer(int client) 
