@@ -15,3 +15,6 @@ Sourcemod plugin that join player to spectators.
 * CS:GO Dedicated Server
 * Sourcemod
 * Metamod
+
+# Links
+* [Plugin on Alliedmods.net](https://forums.alliedmods.net/showthread.php?t=316879)
