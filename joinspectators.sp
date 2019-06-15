@@ -4,6 +4,7 @@
 #pragma newdecls required
 
 ConVar moveFrom;
+ConVar isEnable;
 
 public Plugin myinfo = 
 {
@@ -16,12 +17,13 @@ public Plugin myinfo =
 
 public void OnPluginStart()
 {
+	isEnable = CreateConVar("sm_js_enable", "1", "Is plugin enabled");
 	moveFrom = CreateConVar("sm_js_movefrom", "10", "Count of players that require to move player to spectators");
 }
 
 public void OnClientPutInServer(int client) 
 {	
-	if (IsFakeClient(client)) {
+	if (!GetConVarBool(isEnable) || IsFakeClient(client)) {
 		return; 
 	}
 	
