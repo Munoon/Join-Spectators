@@ -12,7 +12,7 @@ public Plugin myinfo =
 	author = "Munoon",
 	description = "This plugin join player to spectator if on server more than X players",
 	version = "1.0",
-	url = "www.Train4Game.com"
+	url = "https://github.com/Munoon/Join-Spectators"
 };
 
 public void OnPluginStart()
