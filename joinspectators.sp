@@ -33,5 +33,5 @@ public void OnClientPutInServer(int client)
 		return;
 	}
 	
-	ChangeClientTeam(client, 3);
+	ChangeClientTeam(client, 1);
 }
